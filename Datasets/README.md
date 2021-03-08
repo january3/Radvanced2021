@@ -15,3 +15,6 @@ To download the files, right-click on the link below and save the file:
  * [WIID_19Dec2018.xlsx](https://raw.githubusercontent.com/january3/Radvanced2020/master/Data/WIID_19Dec2018.xlsx)
  * [WIID4 User Guide.pdf](https://raw.githubusercontent.com/january3/Radvanced2020/master/Data/WIID4%20User%20Guide.pdf)
  * [world_energy.tsv](https://raw.githubusercontent.com/january3/Radvanced2020/master/Data/world_energy.tsv)
+ * [SAMN15934930](star.SAMN15934930.all_mates.gene_counts.tab)
+ * [SAMN15934977](star.SAMN15934977.all_mates.gene_counts.tab)
+ * [SAMN15935042](star.SAMN15935042.all_mates.gene_counts.tab)
