@@ -10,9 +10,9 @@ four columns:
 
 
 The files with which you can test your function are
-[SAMN15934930](Datasets/star.SAMN15934930.all_mates.gene_counts.tab),
-[SAMN15934977](Datasets/star.SAMN15934977.all_mates.gene_counts.tab) and
-[SAMN15935042](Datasets/star.SAMN15935042.all_mates.gene_counts.tab).
+[SAMN15934930](../Datasets/star.SAMN15934930.all_mates.gene_counts.tab),
+[SAMN15934977](../Datasets/star.SAMN15934977.all_mates.gene_counts.tab) and
+[SAMN15935042](../Datasets/star.SAMN15935042.all_mates.gene_counts.tab).
   
 Here is what
 the function is supposed to do (for now):
