@@ -278,6 +278,16 @@ Instead of using a `for` loop to walk over all elements of a vector, one
 calls a function which operates on the vector as a whole. This is how
 standard R functions (such as `+`) work.
 
+Some vectorized functions:
+
+ * practically everything
+ * most of the basic functions like `sum`, `log`, `sd`, `mean`
+ * `colMeans`, `colSums`, `rowMeans`, `rowSums` do exactly what they say
+ * make sure your functions are vectorized as well!
+ * if you can't find a vectorized function, use `*map*` / `*apply`
+
+## Vectorization
+
 Use `*apply` and, from tidyverse's `purrr` package, `*map*` instead of
 loops. Loops in R are almost never necessary.
 
