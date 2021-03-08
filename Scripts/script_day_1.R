@@ -30,20 +30,26 @@ read_gene_counts <- function(whatever) {
   
   results <- cbind(f1_df, f2_df, f3_df)
 
-
+## Function for reading gene counts from STAR aligner files
 read_gene_counts <- function(fnames) {
   
-  f1_df <- read.table(fnames[1])
+  # results will hold the resulting data frame
+  # we ininitalize it with the first file
+  results <- read.table(fnames[1])
   
+  # read all the *remaining* files
   for(fn in fnames[-1]) {
     df <- read.table(fn)
-    f1_df <- cbind(f1_df, df[ , 2])
+    results <- cbind(results, df[ , 2])
   }
   
-  return(f1_df)
+  # results should have now 1 ID column and as 
+  # many value columns as there were files
+  return(results)
 }
 
-
-
+#fnames <- list.files(directory)
+files <- c(f1, f2, f3)
+read_gene_counts(files)
 
 
