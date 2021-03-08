@@ -505,7 +505,7 @@ abs((3 * 0.1 / 3 * 10) - 1) &lt; eps</pre>
 
 </article></slide><slide class=""><hgroup><h2>Partial matching behind <code>$</code></h2></hgroup><article  class="smaller " id="partial-matching-behind">
 
-<pre >a &lt;- list()
+<pre class = 'prettyprint lang-r'>a &lt;- list()
 a$coefficient &lt;- 2
 a$c # result: 2</pre>
 
@@ -520,13 +520,13 @@ a$c # result: 2</pre>
 
 <p>Solution:</p>
 
-<pre >na.strings=NULL</pre>
+<pre class = 'prettyprint lang-r'>na.strings=NULL</pre>
 
 </article></slide><slide class=""><hgroup><h2>Precedence</h2></hgroup><article  class="smaller " id="precedence">
 
-<pre >What does the following do?
+<pre >What does the following do?</pre>
 
-n &lt;- 10
+<pre class = 'prettyprint lang-r'>n &lt;- 10
 for(i in 1:n-1) print(i)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Typos</h2></hgroup><article  class="smaller " id="typos">
@@ -581,6 +581,33 @@ if(is.na(vec)) { print(&quot;NA&#39;s found!&quot;) } else { print(&quot;No NA&#
 <pre class = 'prettyprint lang-r'>if(any(is.na(vec))) { print(&quot;NA&#39;s found!&quot;) } else { print(&quot;No NA&#39;s!&quot;) }</pre>
 
 <pre >## [1] &quot;NA&#39;s found!&quot;</pre>
+
+</article></slide><slide class=""><hgroup><h2>Changing one element may change the type of a vector</h2></hgroup><article  class="smaller " id="changing-one-element-may-change-the-type-of-a-vector">
+
+<pre class = 'prettyprint lang-r'>a &lt;- 1:10
+typeof(a)</pre>
+
+<pre >## [1] &quot;integer&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>a[1] &lt;- &quot;a&quot;
+typeof(a)</pre>
+
+<pre >## [1] &quot;character&quot;</pre>
+
+</article></slide><slide class=""><hgroup><h2>Confusing <code>length</code> with <code>nchar</code></h2></hgroup><article  class="smaller " id="confusing-length-with-nchar">
+
+<pre class = 'prettyprint lang-r'>a &lt;- &quot;January Weiner&quot;
+length(a)</pre>
+
+<pre >## [1] 1</pre>
+
+<pre class = 'prettyprint lang-r'>nchar(a)</pre>
+
+<pre >## [1] 14</pre>
+
+</article></slide><slide class=""><hgroup><h2>Be paranoid</h2></hgroup><article  class="smaller " id="be-paranoid">
+
+<p>A Software Tester walks in a bar…</p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Functions</h2></hgroup><article  class="smaller " id="functions">
 

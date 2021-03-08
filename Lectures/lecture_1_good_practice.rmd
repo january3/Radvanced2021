@@ -355,9 +355,11 @@ selected. This is usually not the desired outcome and can be avoided with
 ## Partial matching behind `$`
 
 
-    a <- list()
-    a$coefficient <- 2
-    a$c # result: 2
+```r
+a <- list()
+a$coefficient <- 2
+a$c # result: 2
+```
 
 Solution:
 
@@ -370,14 +372,18 @@ string (e.g. abbreviation of "Namibia"), trouble ensues.
 
 Solution:
 
-    na.strings=NULL
+```r
+na.strings=NULL
+```
 
 ## Precedence
 
     What does the following do?
 
-    n <- 10
-    for(i in 1:n-1) print(i)
+```r
+n <- 10
+for(i in 1:n-1) print(i)
+```
 
 ## Typos
 
@@ -420,6 +426,27 @@ if(is.na(vec)) { print("NA's found!") } else { print("No NA's!") }
 
 if(any(is.na(vec))) { print("NA's found!") } else { print("No NA's!") }
 ```
+
+## Changing one element may change the type of a vector
+
+```{r}
+a <- 1:10
+typeof(a)
+a[1] <- "a"
+typeof(a)
+```
+
+## Confusing `length` with `nchar`
+
+```{r}
+a <- "January Weiner"
+length(a)
+nchar(a)
+```
+
+## Be paranoid
+
+A Software Tester walks in a bar...
 
 
 # Functions
