@@ -1,17 +1,79 @@
 ---
-title: "Advanced R:\nTidyverse"
+title: "Advanced R:\nRmarkdown and Tidyverse"
 author: "January Weiner"
 date: "`r Sys.Date()`"
 output:
   ioslides_presentation:
     widescreen: true
     smaller: true
-    css: "../files/style.css"
+    css: "files/style.css"
+bibliography: "bibliography.bib"
 ---
 
 ```{r echo=FALSE,results="hide",message=FALSE,warning=FALSE}
 library(tidyverse)
 ```
+
+# (R)markdown
+
+## (R)markdown
+
+Markdown is a markup language: a way of indicating to the computers which
+parts of our text mean what, e.g. what is a header, what is a bullet list
+etc. Markdown is very, very simple and easy to read even when you are human
+(unlike XML or HTML).
+
+(Demo)
+
+## Markdown basics
+
+ * Headers: `#`, `##`, `###`…
+ * *italic* `*italic*` or `_italic_`
+ * **bold** `**bold**` or `__bold__`
+ * bullet lists: start with ` *`
+ * numbered lists: start with ` 2.`
+
+## So much more
+
+ * tables (you can produce them in R with `kable` or `pander`)
+ * code: demarkated using backticks (`` ` ``)
+ * references: need a BibTeX file (you can get it from google scholar!)
+ * images: `![my_portrait](portrait.jpeg)`
+
+## References
+
+ * By default, always at the end of the document
+ * open a new file, call it `bibliography.bib` or similar
+ * go to Google scholar, search for a paper, click on "BibTeX" and copy the
+   contents to the file
+ * add a line to the header of the Rmarkdown document:
+ 
+       bibliography: "bibliography.bib"
+ 
+ * insert references like this: `[@weiner2018metabolite]` which generates: [@weiner2018metabolite]
+
+
+## Using R in markdown for fun and profit
+
+Inline R code:
+
+    The mtcars data set has `r nrow(mtcars)` rows.
+
+The mtcars data set has `r nrow(mtcars)` rows.
+
+## Using R in markdown for fun and profit
+
+Tables:
+
+```{r}
+library(knitr)
+kable(mtcars[1:4, ])
+```
+
+## Exercise session [2/0](../Exercises/day_2.md)
+
+
+
 
 
 # Tidyverse
@@ -301,7 +363,7 @@ The dot (`.`) stands for the argument.
 
 ## Long vs wide data
 
- `gather()`, `spread()`
+ `pivot_longer()`, `pivot_wider()`
 
 ## Converting from wide to long:
 
@@ -313,8 +375,8 @@ wide <- read.table(header=TRUE, text='
        3   F     9.5  13.1  13.8
        4   M    11.5  13.4  12.9
 ')
-tidyr::gather(wide, key="condition", 
-             value="measurement",  control:cond2)
+pivot_longer(wide, control:cond2, names_to="key",
+             values_to="measurement")
 ```
 
 `tidyr::gather` means we are accessing the `gather()` function from the
@@ -330,8 +392,8 @@ wide <- read.table(header=TRUE, text='
        3   F     9.5  13.1  13.8
        4   M    11.5  13.4  12.9
 ')
-tidyr::gather(wide, key="condition", 
-             value="measurement",  control:cond2)
+pivot_longer(wide, control:cond2, names_to="key",
+             values_to="measurement")
 ```
 
 
@@ -356,11 +418,13 @@ long <- read.table(header=TRUE, text='
 
 ```{r}
 ## not what we wanted!!!
-tidyr::spread(long, key="condition", value="measurement")
+pivot_wider(long, names_from="condition", values_from="measurement")
 
 ## Instead: 
 long <- long[ , c("subject", "condition", "measurement") ]
-tidyr::spread(long, key="condition", value="measurement")
+## or:
+## long <- long %>% select(-sampleID)
+pivot_wider(long, names_from="condition", values_from="measurement")
 ```
 
 

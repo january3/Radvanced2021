@@ -29,6 +29,17 @@ https://github.com/january3/Radvanced2021
  * Ability to write code for others
  * Practical tips and tricks
 
+## Course motto
+
+> R is a shockingly dreadful language for an exceptionally useful data
+> analysis environment. The more you learn about the R language, the worse
+> it will feel. The development environment suffers from literally decades
+> of accretion of stupid hacks from a community containing, to a
+> first-order approximation, zero software engineers. R makes me want to
+> kick things almost every time I use it.
+
+Tim Smith, Kevin Ushey, [arrGh: a newcomer’s (angry) guide to R](http://arrgh.tim-smith.us/)
+
 ## How the course will look like
 
  * Lectures
@@ -599,35 +610,5 @@ add(1, 2)
 
 (function(a, b) { a + b })(1, 2)
 ```
-
-# A few more things
-
-## (R)markdown
-
-Markdown is a markup language: a way of indicating to the computers which
-parts of our text mean what, e.g. what is a header, what is a bullet list
-etc. Markdown is very, very simple and easy to read even when you are human
-(unlike XML or HTML).
-
-(Demo)
-
-## Markdown basics
-
- * Headers: `#`, `##`, `###`…
- * *italic* `*italic*` or `_italic_`
- * **bold** `**bold**` or `__bold__`
- * bullet lists: start with ` *`
- * numbered lists: start with ` 2.`
-
-## So much more
-
- * tables (you can produce them in R with `pander`)
- * code: demarkated using backticks (`` ` ``)
- * references: need a BibTeX file (you can get it from google scholar!)
- * images: `![my_portrait](portrait.jpeg)`
-
-
-
-
 
 
