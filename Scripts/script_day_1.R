@@ -1,6 +1,8 @@
-add_two <- function(first_value, second_value=2) { 
-  result <- first_value + second_value
-  return(result)
+add_two <- function(first_value, second_value=2) {
+  if(!is.numeric(first_value) || !is.numeric(second_value)) {
+    stop("I cannot add this")
+  }
+  first_value + second_value
 }
 
 
@@ -51,5 +53,16 @@ read_gene_counts <- function(fnames) {
 #fnames <- list.files(directory)
 files <- c(f1, f2, f3)
 read_gene_counts(files)
+
+input <- list(a="forty two", b=42)
+
+for(i in 1:2) {
+  res <- try(exp(input[[i]]))
+  if(inherits(res, "try-error")) {
+    warning("operation did not work")
+  } else {
+    message(res)
+  }
+}
 
 
