@@ -361,16 +361,16 @@ The dot (`.`) stands for the argument.
 
 ## Wide and Long format
 
- Long advantages:
+ Long (stacked, tall, narrow) advantages:
 
   * easier to filter, process, visualize, do statistics with
   * focused on measurement ("patient ID" or equivalent is a covariate, and so is measurement type)
 
- Wide advantages:
+ Wide (un-stacked) advantages:
 
   * groups data by a covariate ("patient ID")
   * can be easier to manage (each column one measurement type)
-
+  * can be more compact
 
 ## Long vs wide data
 
@@ -389,9 +389,6 @@ wide <- read.table(header=TRUE, text='
 pivot_longer(wide, control:cond2, names_to="key",
              values_to="measurement")
 ```
-
-`tidyr::gather` means we are accessing the `gather()` function from the
-`tidyr` package without having to call `library(tidyr)` first.
 
 ## Converting from wide to long:
 
@@ -432,11 +429,16 @@ long <- read.table(header=TRUE, text='
 pivot_wider(long, names_from="condition", values_from="measurement")
 
 ## Instead: 
-long <- long[ , c("subject", "condition", "measurement") ]
-## or:
-## long <- long %>% select(-sampleID)
-pivot_wider(long, names_from="condition", values_from="measurement")
+pivot_wider(long, id_cols=subject, names_from="condition", values_from="measurement")
 ```
+
+## Long vs wide data: which one to choose?
+
+ * What is the target of the data?
+    * analysis, storage, data exchange: long format
+    * results presentation, overview: wide format (possibly)
+ * What is the unit of observation?
+    * one unit = one row
 
 
 
