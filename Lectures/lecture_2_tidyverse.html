@@ -9,7 +9,7 @@
 
 
 
-  <meta name="date" content="2021-03-08" />
+  <meta name="date" content="2021-03-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -173,7 +173,7 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2021-03-08</p>
+            <p style="margin-top: 6px; margin-left: -2px;">2021-03-09</p>
           </hgroup>
   </slide>
 
@@ -191,8 +191,9 @@ slide:not(.current) .plotly.html-widget{
 <li>Headers: <code>#</code>, <code>##</code>, <code>###</code>…</li>
 <li><em>italic</em> <code>*italic*</code> or <code>_italic_</code></li>
 <li><strong>bold</strong> <code>**bold**</code> or <code>__bold__</code></li>
-<li>bullet lists: start with <code>*</code></li>
-<li>numbered lists: start with <code>2.</code></li>
+<li>bullet lists: start with <code>*</code> (space before!)</li>
+<li>numbered lists: start with <code>2.</code> (space before!)</li>
+<li>Superscript: a<sup>2</sup> <code>a^2^</code>, subscript: a<sub>2</sub> <code>a~2~</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>So much more</h2></hgroup><article  class="smaller " id="so-much-more">
@@ -224,8 +225,12 @@ slide:not(.current) .plotly.html-widget{
 
 <p>The mtcars data set has 32 rows.</p>
 
+</article></slide><slide class=""><hgroup><h2>Using R in markdown for fun and profit</h2></hgroup><article  class="smaller " id="using-r-in-markdown-for-fun-and-profit-1">
+
+<p>Tables:</p>
+
 <pre class = 'prettyprint lang-r'>library(knitr)
-kable(mtcars)</pre>
+kable(mtcars[1:4, ])</pre>
 
 <table class = 'rmdtable'>
 <tr class="header">
@@ -246,7 +251,7 @@ kable(mtcars)</pre>
 <td align="left">Mazda RX4</td>
 <td align="right">21.0</td>
 <td align="right">6</td>
-<td align="right">160.0</td>
+<td align="right">160</td>
 <td align="right">110</td>
 <td align="right">3.90</td>
 <td align="right">2.620</td>
@@ -260,7 +265,7 @@ kable(mtcars)</pre>
 <td align="left">Mazda RX4 Wag</td>
 <td align="right">21.0</td>
 <td align="right">6</td>
-<td align="right">160.0</td>
+<td align="right">160</td>
 <td align="right">110</td>
 <td align="right">3.90</td>
 <td align="right">2.875</td>
@@ -274,7 +279,7 @@ kable(mtcars)</pre>
 <td align="left">Datsun 710</td>
 <td align="right">22.8</td>
 <td align="right">4</td>
-<td align="right">108.0</td>
+<td align="right">108</td>
 <td align="right">93</td>
 <td align="right">3.85</td>
 <td align="right">2.320</td>
@@ -288,7 +293,7 @@ kable(mtcars)</pre>
 <td align="left">Hornet 4 Drive</td>
 <td align="right">21.4</td>
 <td align="right">6</td>
-<td align="right">258.0</td>
+<td align="right">258</td>
 <td align="right">110</td>
 <td align="right">3.08</td>
 <td align="right">3.215</td>
@@ -297,398 +302,6 @@ kable(mtcars)</pre>
 <td align="right">0</td>
 <td align="right">3</td>
 <td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Hornet Sportabout</td>
-<td align="right">18.7</td>
-<td align="right">8</td>
-<td align="right">360.0</td>
-<td align="right">175</td>
-<td align="right">3.15</td>
-<td align="right">3.440</td>
-<td align="right">17.02</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Valiant</td>
-<td align="right">18.1</td>
-<td align="right">6</td>
-<td align="right">225.0</td>
-<td align="right">105</td>
-<td align="right">2.76</td>
-<td align="right">3.460</td>
-<td align="right">20.22</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Duster 360</td>
-<td align="right">14.3</td>
-<td align="right">8</td>
-<td align="right">360.0</td>
-<td align="right">245</td>
-<td align="right">3.21</td>
-<td align="right">3.570</td>
-<td align="right">15.84</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">Merc 240D</td>
-<td align="right">24.4</td>
-<td align="right">4</td>
-<td align="right">146.7</td>
-<td align="right">62</td>
-<td align="right">3.69</td>
-<td align="right">3.190</td>
-<td align="right">20.00</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="left">Merc 230</td>
-<td align="right">22.8</td>
-<td align="right">4</td>
-<td align="right">140.8</td>
-<td align="right">95</td>
-<td align="right">3.92</td>
-<td align="right">3.150</td>
-<td align="right">22.90</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Merc 280</td>
-<td align="right">19.2</td>
-<td align="right">6</td>
-<td align="right">167.6</td>
-<td align="right">123</td>
-<td align="right">3.92</td>
-<td align="right">3.440</td>
-<td align="right">18.30</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">Merc 280C</td>
-<td align="right">17.8</td>
-<td align="right">6</td>
-<td align="right">167.6</td>
-<td align="right">123</td>
-<td align="right">3.92</td>
-<td align="right">3.440</td>
-<td align="right">18.90</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">Merc 450SE</td>
-<td align="right">16.4</td>
-<td align="right">8</td>
-<td align="right">275.8</td>
-<td align="right">180</td>
-<td align="right">3.07</td>
-<td align="right">4.070</td>
-<td align="right">17.40</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
-<td align="left">Merc 450SL</td>
-<td align="right">17.3</td>
-<td align="right">8</td>
-<td align="right">275.8</td>
-<td align="right">180</td>
-<td align="right">3.07</td>
-<td align="right">3.730</td>
-<td align="right">17.60</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">3</td>
-</tr>
-<tr class="even">
-<td align="left">Merc 450SLC</td>
-<td align="right">15.2</td>
-<td align="right">8</td>
-<td align="right">275.8</td>
-<td align="right">180</td>
-<td align="right">3.07</td>
-<td align="right">3.780</td>
-<td align="right">18.00</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
-<td align="left">Cadillac Fleetwood</td>
-<td align="right">10.4</td>
-<td align="right">8</td>
-<td align="right">472.0</td>
-<td align="right">205</td>
-<td align="right">2.93</td>
-<td align="right">5.250</td>
-<td align="right">17.98</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">Lincoln Continental</td>
-<td align="right">10.4</td>
-<td align="right">8</td>
-<td align="right">460.0</td>
-<td align="right">215</td>
-<td align="right">3.00</td>
-<td align="right">5.424</td>
-<td align="right">17.82</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">Chrysler Imperial</td>
-<td align="right">14.7</td>
-<td align="right">8</td>
-<td align="right">440.0</td>
-<td align="right">230</td>
-<td align="right">3.23</td>
-<td align="right">5.345</td>
-<td align="right">17.42</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">Fiat 128</td>
-<td align="right">32.4</td>
-<td align="right">4</td>
-<td align="right">78.7</td>
-<td align="right">66</td>
-<td align="right">4.08</td>
-<td align="right">2.200</td>
-<td align="right">19.47</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Honda Civic</td>
-<td align="right">30.4</td>
-<td align="right">4</td>
-<td align="right">75.7</td>
-<td align="right">52</td>
-<td align="right">4.93</td>
-<td align="right">1.615</td>
-<td align="right">18.52</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Toyota Corolla</td>
-<td align="right">33.9</td>
-<td align="right">4</td>
-<td align="right">71.1</td>
-<td align="right">65</td>
-<td align="right">4.22</td>
-<td align="right">1.835</td>
-<td align="right">19.90</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Toyota Corona</td>
-<td align="right">21.5</td>
-<td align="right">4</td>
-<td align="right">120.1</td>
-<td align="right">97</td>
-<td align="right">3.70</td>
-<td align="right">2.465</td>
-<td align="right">20.01</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Dodge Challenger</td>
-<td align="right">15.5</td>
-<td align="right">8</td>
-<td align="right">318.0</td>
-<td align="right">150</td>
-<td align="right">2.76</td>
-<td align="right">3.520</td>
-<td align="right">16.87</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="left">AMC Javelin</td>
-<td align="right">15.2</td>
-<td align="right">8</td>
-<td align="right">304.0</td>
-<td align="right">150</td>
-<td align="right">3.15</td>
-<td align="right">3.435</td>
-<td align="right">17.30</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Camaro Z28</td>
-<td align="right">13.3</td>
-<td align="right">8</td>
-<td align="right">350.0</td>
-<td align="right">245</td>
-<td align="right">3.73</td>
-<td align="right">3.840</td>
-<td align="right">15.41</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">Pontiac Firebird</td>
-<td align="right">19.2</td>
-<td align="right">8</td>
-<td align="right">400.0</td>
-<td align="right">175</td>
-<td align="right">3.08</td>
-<td align="right">3.845</td>
-<td align="right">17.05</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Fiat X1-9</td>
-<td align="right">27.3</td>
-<td align="right">4</td>
-<td align="right">79.0</td>
-<td align="right">66</td>
-<td align="right">4.08</td>
-<td align="right">1.935</td>
-<td align="right">18.90</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Porsche 914-2</td>
-<td align="right">26.0</td>
-<td align="right">4</td>
-<td align="right">120.3</td>
-<td align="right">91</td>
-<td align="right">4.43</td>
-<td align="right">2.140</td>
-<td align="right">16.70</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Lotus Europa</td>
-<td align="right">30.4</td>
-<td align="right">4</td>
-<td align="right">95.1</td>
-<td align="right">113</td>
-<td align="right">3.77</td>
-<td align="right">1.513</td>
-<td align="right">16.90</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="left">Ford Pantera L</td>
-<td align="right">15.8</td>
-<td align="right">8</td>
-<td align="right">351.0</td>
-<td align="right">264</td>
-<td align="right">4.22</td>
-<td align="right">3.170</td>
-<td align="right">14.50</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">Ferrari Dino</td>
-<td align="right">19.7</td>
-<td align="right">6</td>
-<td align="right">145.0</td>
-<td align="right">175</td>
-<td align="right">3.62</td>
-<td align="right">2.770</td>
-<td align="right">15.50</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">6</td>
-</tr>
-<tr class="odd">
-<td align="left">Maserati Bora</td>
-<td align="right">15.0</td>
-<td align="right">8</td>
-<td align="right">301.0</td>
-<td align="right">335</td>
-<td align="right">3.54</td>
-<td align="right">3.570</td>
-<td align="right">14.60</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">8</td>
-</tr>
-<tr class="even">
-<td align="left">Volvo 142E</td>
-<td align="right">21.4</td>
-<td align="right">4</td>
-<td align="right">121.0</td>
-<td align="right">109</td>
-<td align="right">4.11</td>
-<td align="right">2.780</td>
-<td align="right">18.60</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">2</td>
 </tr>
 </table>
 
@@ -1037,11 +650,27 @@ starwars %&gt;% group_by(homeworld) %&gt;%
 
 </article></slide><slide class=""><hgroup><h2>Exercise Session 2/2</h2></hgroup><article  class="smaller " id="exercise-session-22">
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>tidyr</h2></hgroup><article  class="smaller " id="tidyr">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Wide and Long data format</h2></hgroup><article  class="smaller " id="wide-and-long-data-format">
+
+</article></slide><slide class=""><hgroup><h2>Wide and Long format</h2></hgroup><article  class="smaller " id="wide-and-long-format">
+
+<p>Long advantages:</p>
+
+<ul>
+<li>easier to filter, process, visualize, do statistics with</li>
+<li>focused on measurement (&ldquo;patient ID&rdquo; or equivalent is a covariate, and so is measurement type)</li>
+</ul>
+
+<p>Wide advantages:</p>
+
+<ul>
+<li>groups data by a covariate (&ldquo;patient ID&rdquo;)</li>
+<li>can be easier to manage (each column one measurement type)</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Long vs wide data</h2></hgroup><article  class="smaller " id="long-vs-wide-data">
 
-<p><code>gather()</code>, <code>spread()</code></p>
+<p><code>pivot_longer()</code>, <code>pivot_wider()</code></p>
 
 </article></slide><slide class=""><hgroup><h2>Converting from wide to long:</h2></hgroup><article  class="smaller " id="converting-from-wide-to-long">
 
@@ -1052,8 +681,8 @@ starwars %&gt;% group_by(homeworld) %&gt;%
        3   F     9.5  13.1  13.8
        4   M    11.5  13.4  12.9
 &#39;)
-tidyr::gather(wide, key=&quot;condition&quot;, 
-             value=&quot;measurement&quot;,  control:cond2)</pre>
+pivot_longer(wide, control:cond2, names_to=&quot;key&quot;,
+             values_to=&quot;measurement&quot;)</pre>
 
 <p><code>tidyr::gather</code> means we are accessing the <code>gather()</code> function from the <code>tidyr</code> package without having to call <code>library(tidyr)</code> first.</p>
 
@@ -1066,22 +695,24 @@ tidyr::gather(wide, key=&quot;condition&quot;,
        3   F     9.5  13.1  13.8
        4   M    11.5  13.4  12.9
 &#39;)
-tidyr::gather(wide, key=&quot;condition&quot;, 
-             value=&quot;measurement&quot;,  control:cond2)</pre>
+pivot_longer(wide, control:cond2, names_to=&quot;key&quot;,
+             values_to=&quot;measurement&quot;)</pre>
 
-<pre >##    subject sex condition measurement
-## 1        1   M   control         7.9
-## 2        2   F   control         6.3
-## 3        3   F   control         9.5
-## 4        4   M   control        11.5
-## 5        1   M     cond1        12.3
-## 6        2   F     cond1        10.6
-## 7        3   F     cond1        13.1
-## 8        4   M     cond1        13.4
-## 9        1   M     cond2        10.7
-## 10       2   F     cond2        11.1
-## 11       3   F     cond2        13.8
-## 12       4   M     cond2        12.9</pre>
+<pre >## # A tibble: 12 x 4
+##    subject sex   key     measurement
+##      &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;
+##  1       1 M     control         7.9
+##  2       1 M     cond1          12.3
+##  3       1 M     cond2          10.7
+##  4       2 F     control         6.3
+##  5       2 F     cond1          10.6
+##  6       2 F     cond2          11.1
+##  7       3 F     control         9.5
+##  8       3 F     cond1          13.1
+##  9       3 F     cond2          13.8
+## 10       4 M     control        11.5
+## 11       4 M     cond1          13.4
+## 12       4 M     cond2          12.9</pre>
 
 </article></slide><slide class=""><hgroup><h2>Converting from long to wide</h2></hgroup><article  class="smaller " id="converting-from-long-to-wide">
 
@@ -1101,27 +732,33 @@ tidyr::gather(wide, key=&quot;condition&quot;,
 </article></slide><slide class=""><hgroup><h2>Converting from long to wide</h2></hgroup><article  class="smaller " id="converting-from-long-to-wide-1">
 
 <pre class = 'prettyprint lang-r'>## not what we wanted!!!
-tidyr::spread(long, key=&quot;condition&quot;, value=&quot;measurement&quot;)</pre>
+pivot_wider(long, names_from=&quot;condition&quot;, values_from=&quot;measurement&quot;)</pre>
 
-<pre >##   subject sampleID sex cond1 cond2 control
-## 1       1 ID000001   M    NA    NA     7.9
-## 2       1 ID000002   M  12.3    NA      NA
-## 3       1 ID000003   M    NA  10.7      NA
-## 4       2 ID000004   F    NA    NA     6.3
-## 5       2 ID000005   F  10.6    NA      NA
-## 6       2 ID000006   F    NA  11.1      NA
-## 7       3 ID000007   F    NA    NA     9.5
-## 8       3 ID000008   F  13.1    NA      NA
-## 9       3 ID000009   F    NA  13.8      NA</pre>
+<pre >## # A tibble: 9 x 6
+##   subject sampleID sex   control cond1 cond2
+##     &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1       1 ID000001 M         7.9  NA    NA  
+## 2       1 ID000002 M        NA    12.3  NA  
+## 3       1 ID000003 M        NA    NA    10.7
+## 4       2 ID000004 F         6.3  NA    NA  
+## 5       2 ID000005 F        NA    10.6  NA  
+## 6       2 ID000006 F        NA    NA    11.1
+## 7       3 ID000007 F         9.5  NA    NA  
+## 8       3 ID000008 F        NA    13.1  NA  
+## 9       3 ID000009 F        NA    NA    13.8</pre>
 
 <pre class = 'prettyprint lang-r'>## Instead: 
 long &lt;- long[ , c(&quot;subject&quot;, &quot;condition&quot;, &quot;measurement&quot;) ]
-tidyr::spread(long, key=&quot;condition&quot;, value=&quot;measurement&quot;)</pre>
+## or:
+## long &lt;- long %&gt;% select(-sampleID)
+pivot_wider(long, names_from=&quot;condition&quot;, values_from=&quot;measurement&quot;)</pre>
 
-<pre >##   subject cond1 cond2 control
-## 1       1  12.3  10.7     7.9
-## 2       2  10.6  11.1     6.3
-## 3       3  13.1  13.8     9.5</pre>
+<pre >## # A tibble: 3 x 4
+##   subject control cond1 cond2
+##     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1       1     7.9  12.3  10.7
+## 2       2     6.3  10.6  11.1
+## 3       3     9.5  13.1  13.8</pre>
 
 </article></slide><slide class=""><hgroup><h2>group_by</h2></hgroup><article  class="smaller " id="group_by-2">
 
@@ -1161,7 +798,59 @@ tidyr::spread(long, key=&quot;condition&quot;, value=&quot;measurement&quot;)</p
 # and not by name
 df %&lt;&gt;% select(!!cols)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Exercise Session 2/3</h2></hgroup><article  class="smaller unnumbered" id="exercise-session-23">
+</article></slide><slide class=""><hgroup><h2>Exercise Session 2/3</h2></hgroup><article  class="smaller " id="exercise-session-23">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Cleaning up data</h2></hgroup><article  class="smaller " id="cleaning-up-data">
+
+</article></slide><slide class=""><hgroup><h2>Mapping functions (part #1)</h2></hgroup><article  class="smaller " id="mapping-functions-part-1">
+
+<p><code>lapply</code> takes two arguments:</p>
+
+<ul>
+<li>a vector or a list,</li>
+<li>a function</li>
+</ul>
+
+<p>Then, it applies the function to each element of the vector / list and returns a list (with one element per list).</p>
+
+</article></slide><slide class=""><hgroup><h2>Example</h2></hgroup><article  class="smaller " id="example">
+
+<pre class = 'prettyprint lang-r'>fn &lt;- c(&quot;em.txt&quot;, &quot;pstrem.txt&quot;, &quot;bzdrem.txt&quot;)
+res &lt;- lapply(fn, read.table)
+lapply(res, summary)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Example with data frames</h2></hgroup><article  class="smaller " id="example-with-data-frames">
+
+<p>Remember: data frames are also lists!</p>
+
+<pre class = 'prettyprint lang-r'>annot &lt;- read.csv(&quot;annotation.all.csv&quot;)
+
+## what are the variable types?
+lapply(annot, class)
+
+## how many missing data?
+count_nas &lt;- function(x) {
+  sum(is.na(x))
+}
+lapply(annot, count_nas)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Cleaning up data: diagnostics</h2></hgroup><article  class="smaller " id="cleaning-up-data-diagnostics">
+
+<ul>
+<li>Never trust the data</li>
+<li><em>Not even your own</em></li>
+<li>use tibbles (and/or colorDF) to display data frames</li>
+<li>Check whether data types are what they are supposed to be</li>
+<li>Check whether factors have the expected number of levels
+
+<ul>
+<li>Use <code>unique</code> to figure out how many different values there are in a vector</li>
+</ul></li>
+<li>Check whether numbers have the correct range</li>
+<li>Check whether character / numeric vectors are not factors by mistake</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Exercise Session 2/4</h2></hgroup><article  class="smaller unnumbered" id="exercise-session-24">
 
 <div class="references csl-bib-body hanging-indent" id="refs">
 <div class="csl-entry" id="ref-weiner2018metabolite">

@@ -19,3 +19,4 @@ To download the files, right-click on the link below and save the file:
  * [SAMN15934977](https://raw.githubusercontent.com/january3/Radvanced2021/master/Datasets/star.SAMN15934977.all_mates.gene_counts.tab)
  * [SAMN15935042](https://raw.githubusercontent.com/january3/Radvanced2021/master/Datasets/star.SAMN15935042.all_mates.gene_counts.tab)
  * [annotation.all.csv](https://raw.githubusercontent.com/january3/Radvanced2021/master/Datasets/annotation.all.csv)
+ * [meta_data_botched.xlsx](https://raw.githubusercontent.com/january3/Radvanced2021/master/Datasets/meta_data_botched.xlsx)
