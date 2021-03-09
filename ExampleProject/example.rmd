@@ -1,0 +1,74 @@
+---
+title: "Whatever"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+bibliography: bibliography.bib
+---
+
+# Title1 
+
+## Title2 
+
+ * we
+ * can 
+ * make 
+ * bullet lists
+ 
+ 1. or
+ 2. numbered 
+ 3. lists
+    * another bullet list
+    
+**some basic** *formatting* 
+
+---
+
+
+above is a line
+
+a^2^ b~subscript~
+
+log~2~ fold change
+
+$\sum_{i=1}^{n} x^{i+1} \log(10) \sin(\pi) \chi^2$
+
+------------------------------------------------
+something               something       else
+---------------- ------------------ ------------
+asdf asdf           asdfasdfasdf      asdfasdf 
+
+next row              2 +1             $2^e$
+------------------------------------------------
+
+Citing myself is a bad thing [@weiner2018metabolite].
+
+```{r}
+group1 <- rnorm(20)
+group2 <- rnorm(20)
+
+res <- t.test(group1, group2)
+```
+
+The difference between the groups was `r if(res$p.value > 0.05) "not"` 
+significant (`r format.pval(res$p.value, digits=2)`).
+
+
+```{r}
+# this will be computer code
+a <- 1
+
+plot(1:10)
+```
+
+
+```{r}
+library(DT)
+datatable(mtcars)
+
+```
+
+
+![Image caption](physalia.png)
+Here is refernces / links: [link to physala](https://physalia-courses.org)
