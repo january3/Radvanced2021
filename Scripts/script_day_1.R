@@ -1,8 +1,29 @@
-add_two <- function(first_value, second_value=2) {
+result <- 100
+
+
+add_two <- function(first_value, second_value=2, hello_world=NULL) {
   if(!is.numeric(first_value) || !is.numeric(second_value)) {
     stop("I cannot add this")
   }
-  first_value + second_value
+  
+  if(!is.null(hello_world)) {
+    # do something about the world
+  }
+  result <- first_value + second_value + result
+  return(result)
+}
+
+
+add_two <- function(first_value, second_value=2) {
+  
+  res <- try(first_value + second_value)
+  
+  if(inherits(res, "try-error")) {
+    warning("Operation did not succeed")
+    return(NA)
+  }
+  
+  return(res)
 }
 
 
@@ -33,11 +54,19 @@ read_gene_counts <- function(whatever) {
   results <- cbind(f1_df, f2_df, f3_df)
 
 ## Function for reading gene counts from STAR aligner files
-read_gene_counts <- function(fnames) {
+read_gene_counts <- function(fnames, annotation=NULL) {
   
   # results will hold the resulting data frame
   # we ininitalize it with the first file
   results <- read.table(fnames[1])
+  
+  if(!is.null(annotation)) {
+    
+    # read the annotation file
+    # add the annotion file contents to the left side of results
+    
+    results <- cbind(annotation, results)
+  }
   
   # read all the *remaining* files
   for(fn in fnames[-1]) {
