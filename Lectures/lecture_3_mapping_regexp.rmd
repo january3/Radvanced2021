@@ -423,14 +423,14 @@ identifiers <- c("S001 ID9835", "S002-ID12363", "S003_ID84755")
 
 Many ways to handle this.
 
-### Group example
+## Group example
 
 ```{r}
 identifiers <- c("S001 ID9835", "S002-ID12363", "S003_ID84755")
 data.frame(ids=identifiers) %>% separate(ids, sep="[- _]", into=c("sample", "ID"))
 ```
 
-### Group example
+## Group example
 
 
 ```{r}
@@ -441,7 +441,7 @@ data.frame(ids=identifiers) %>% separate(ids, sep="[- _]", into=c("sample", "ID"
 strsplit(identifiers, "[- _]")
 ```
 
-### Group example
+## Group example
 
 ```{r}
 identifiers <- c("S001 ID9835", "S002-ID12363", "S003_ID84755")
