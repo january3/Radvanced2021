@@ -17,7 +17,7 @@ source code).
   example
 
 
-[Lecture 1](lecture_1_good_practice.html)
+[Lecture 1](Lectures/lecture_1_good_practice.html)
 
 lecture_1_good_practice.rmd
 lecture_2_tidyverse.html
