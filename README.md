@@ -16,6 +16,18 @@ source code).
   link to the raw file ("https://raw.githubusercontent.com...") from R, for
   example
 
+
+[Lecture 1](lecture_1_good_practice.html)
+
+lecture_1_good_practice.rmd
+lecture_2_tidyverse.html
+lecture_2_tidyverse.rmd
+lecture_3_mapping_regexp.html
+lecture_3_mapping_regexp.rmd
+lecture_4_graphics.rmd
+lecture_5_packaging.rmd
+lecture_6_bioconductor.rmd
+
 ```
 read_csv("https://raw.githubusercontent.com/january3/Radvanced2020/master/Data/iris.csv")
 ```
