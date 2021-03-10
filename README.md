@@ -16,11 +16,11 @@ source code).
   link to the raw file ("https://raw.githubusercontent.com...") from R, for
   example
 
-* Lectures, to view them, first [click here](https://january3.github.io/Radvanced2021):
+* Lectures:
 
-    * [Lecture 1 (Good coding practices)](Lectures/lecture_1_good_practice.html)
-    * [Lecture 2 (Rmarkdown / tidyverse)](Lectures/lecture_2_tidyverse.html)
-    * [Lecture 3 (mapping / regexp)](Lectures/lecture_3_mapping_regexp.html)
+    * [Lecture 1 (Good coding practices)](https://january3.github.io/Radvanced2021/Lectures/lecture_1_good_practice.html)
+    * [Lecture 2 (Rmarkdown / tidyverse)](https://january3.github.io/Radvanced2021/Lectures/lecture_2_tidyverse.html)
+    * [Lecture 3 (mapping / regexp)](https://january3.github.io/Radvanced2021/Lectures/lecture_3_mapping_regexp.html)
 
 ```
 read_csv("https://raw.githubusercontent.com/january3/Radvanced2020/master/Data/iris.csv")
