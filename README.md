@@ -16,7 +16,7 @@ source code).
   link to the raw file ("https://raw.githubusercontent.com...") from R, for
   example
 
-* Lectures:
+* Lectures, to view them, first [click here](https://january3.github.io/Radvanced2021):
 
     * [Lecture 1 (Good coding practices)](Lectures/lecture_1_good_practice.html)
     * [Lecture 2 (Rmarkdown / tidyverse)](Lectures/lecture_2_tidyverse.html)
