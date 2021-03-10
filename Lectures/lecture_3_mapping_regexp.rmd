@@ -21,11 +21,47 @@ library(beeswarm)
 
 # Mapping
 
+## Mapping functions
+
+`lapply` takes two arguments: 
+
+  * a vector or a list, 
+  * a function
+
+Then, it applies the function to each element of the vector / list and
+returns a list (with one element per list).
+
+## Example
+
+```{r eval=FALSE}
+fn <- c("em.txt", "pstrem.txt", "bzdrem.txt")
+res <- lapply(fn, read.table)
+lapply(res, summary)
+```
+
+## Example with data frames
+
+Remember: data frames are also lists!
+
+```{r eval=FALSE}
+annot <- read.csv("annotation.all.csv")
+
+## what are the variable types?
+lapply(annot, class)
+
+## how many missing data?
+count_nas <- function(x) {
+  sum(is.na(x))
+}
+lapply(annot, count_nas)
+```
+
+
 ## How to understand mapping
 
 In R, functions can be passed as arguments.
 
-```r
+```{r eval=FALSE}
 my_lapply <- function(x, func) {
   n <- length(x)
   ret <- list()
@@ -37,19 +73,44 @@ my_lapply <- function(x, func) {
 }
 ```
 
+## Closures
+
+Creating a function with `foox <- function(x) { ... }` is not different
+from assigning a value to a variable, like `foox <- 2`. Just like you don't
+have to use `foox` when you mean `2`, but can use `2` directly, you don't
+have to assign function to a variable, but can use `function(x) { ... }`
+directly:
+
+```{r eval=FALSE}
+## because of precedence, we need brackets
+(function(a, b){ a + b })(1, 2) 
+
+## is the same as
+add_two <- function(a, b){ a + b }
+add_two(1, 2)
+```
+
 ## Mapping in R / in R + tidyverse
 
-```{r}
+We can use closures always:
+
+```{r, eval=FALSE}
 tmp <- list(a=1, b=2, c=1:10)
 
 lapply(tmp, length)
 lapply(tmp, function(x) paste(x, collapse=", "))
 ```
 
+Remember: `.` in R is just a letter, it can be a variable. The last part
+can be
+
+```{r eval=FALSE}
+lapply(tmp, function(.) paste(., collapse=", "))
+```
 
 ## Mapping in R / in R + tidyverse
 
-```{r}
+```{r eval=FALSE}
 map(tmp, ~ paste(., collapse=", "))
 
 ## type conversion is always specified
@@ -61,6 +122,8 @@ map_chr(tmp, ~ paste(., collapse=", "))
  * The \*pply functions are still widely used, so you will see them in code
  * sometimes using tidyverse does not really give you a bonus (90% of the
    cases a regular lapply will do)
+ * tidyverse notation with `~` is a bit more concise, but as any shorthand,
+   it can be confusing
 
 ## Why not use `group_by` and `summarise`?
 
@@ -69,6 +132,8 @@ They don't work on lists of vectors which have different lengths!
 
 On the other hand, \*pply family and the purrr functions work also on data
 frames (because data frames are lists!).
+
+Also, mapping functions are way more powerful.
 
 ## lapply & sapply
 
@@ -90,20 +155,20 @@ This is a special form of `sapply` which simply calls a function `n` times
 and returns the results in a list. *Note that it uses an expression and not
 a function as a second argument.*
 
-```r
+```{r eval=FALSE}
 ## create 10 vectors with random numbers
 replicate(10, rnorm(10), simplify=FALSE)
 ```
 
 ## General form
 
-```r
+```{r eval=FALSE}
 xxxapply(data, ..., function)
 ```
 
 Where `function` can be a closure (anonymous function), defined in place:
 
-```r
+```{r eval=FALSE}
 ## replace spaces by underscores
 sapply(starwars$name, 
   function(x) 
@@ -118,7 +183,7 @@ The second argument determines whether it works row-wise (1) or column-wise
 (2):
 
 
-```r
+```{r eval=FALSE}
 ## matrix of random numbers, 3 x 20
 mtx <- matrix(rnorm(60), ncol=3)
 
@@ -145,7 +210,7 @@ number of cylinders:
 tapply(mtcars$mpg, mtcars$cyl, mean)
 ```
 
-This is a really important function.
+This is a really useful function.
 
 ## Exercise 3/1
 
@@ -181,7 +246,7 @@ argument, and instead of writing `function(x) ...` you write `~ ...`:
 The same notation can be used also in dplyr with the `mutate_all` and
 `rename_all` functions:
 
-```r
+```{r eval=FALSE}
 ## Replace "none" by NA 
 starwars %>% mutate_all(~ gsub("none", NA, .))
 
@@ -195,7 +260,7 @@ These two create a data frame. If your function returns each time a data
 frame, map will join these – either by rows (`map_dfr`) or by
 columns (`map_dfc`).
 
-```r
+```{r eval=FALSE}
 ## create a list with 10 random vectors
 rv <- map(1:10, ~ rnorm(10))
 names(rv) <- LETTERS[1:10]
@@ -210,7 +275,7 @@ map_dfc(rv, ~ c(mean=mean(.), sd=sd(.)))
 Sometimes you want to go over two or more vectors at the same time. 
 Instead of `.` you have two automatic variable names, `.x` and `.y`.
 
-```r
+```{r eval=FALSE}
 ## add number of vehicles to each name
 sw_names <- starwars$name
 sw_vehcls <- starwars$vehicles
@@ -223,7 +288,7 @@ map2_chr(sw_names, sw_vehcls,
 `pmap` uses a list of vectors of identical length and passes all its
 columns as `...` to a function.
 
-```r
+```{r eval=FALSE}
 data <- list(a=1:3, b=rnorm(3), c=3:1)
 pmap(data, ~ sum(...))
 ```
@@ -234,7 +299,7 @@ pmap(data, ~ sum(...))
 Remember: data.frame is also a list! So you
 can apply pmap to a data frame and process each row.
 
-```r
+```{r eval=FALSE}
 starwars %>% 
   select(name, hair_color, eye_color) %>% 
   mutate_all(~ gsub("none", NA, .)) %>%
@@ -242,7 +307,22 @@ starwars %>%
   pmap_chr(~ sprintf("%s has %s hair and %s eyes", ...))
 ```
 
+
+## `imap_*` functions
+
+Very useful! Instead of having only `.` for the actual element, we have
+`.x` for the element and *additionally* `.y` which holds this elements
+name.
+
+```{r}
+vec <- list(last_name="Gates", first_name="Bill")
+map_chr(vec, ~ paste0(.y, ": ", .x)
+```
+
+
+
 ## Exercise 3/2
+
 
 # Regular expressions
 
@@ -260,6 +340,32 @@ atom, which can be followed by a modifier. Examples:
  * `[...]` – (atom) match any letter between the brackets
  * `[^...]` – (atom) match anything *but* a letter between the brackets
  
+## Examples
+
+```{r}
+gsub("a+", "%", "q a aa aaa")
+gsub("a*", "%", "q a aa aaa")
+gsub("a?", "%", "q a aa aaa")
+gsub("[abcdz]", "%", "abcdefghijklmnopqrstuvwz")
+gsub("[a-cu-z]", "%", "abcdefghijklmnopqrstuvwz")
+```
+
+## Ranges / classes
+
+```{r}
+gsub("[[:alnum:]]", "@", "2 + 3 * a = 10")
+```
+
+Some classes:
+
+ * `[:alpha:]` - all characters (a-z, A-Z)
+ * `[:space:]` – all spaces (tabs etc)
+ * `[:graph:]` – characters + punctuations
+
+
+Look up `?regexp` for more.
+
+
 
 ## Other important modifiers
 
@@ -306,5 +412,65 @@ input <- "name:January last_name:Weiner"
 gsub("name:(.*) last_name:(.*)", "\\2 \\1", input)
 ```
 
+## Group example
+
+Problem: botched identifiers, fusing sample ids and individual IDs.
+
+```{r}
+identifiers <- c("S001 ID9835", "S002-ID12363", "S003_ID84755")
+```
+
+
+Many ways to handle this.
+
+### Group example
+
+```{r}
+identifiers <- c("S001 ID9835", "S002-ID12363", "S003_ID84755")
+data.frame(ids=identifiers) %>% separate(ids, sep="[- _]", into=c("sample", "ID"))
+```
+
+### Group example
+
+
+```{r}
+identifiers <- c("S001 ID9835", "S002-ID12363", "S003_ID84755")
+
+data.frame(ids=identifiers) %>% separate(ids, sep="[- _]", into=c("sample", "ID"))
+
+strsplit(identifiers, "[- _]")
+```
+
+### Group example
+
+```{r}
+identifiers <- c("S001 ID9835", "S002-ID12363", "S003_ID84755")
+
+regex <- "(S[0-9]+)[ -_](ID[0-9]+)"
+data.frame(
+  sample=gsub(regex, "\\1", identifiers),
+  ID=gsub(regex, "\\1", identifiers))
+```
+
+
+
+
 ## Exercise 3/3
+
+# Cleaning up data
+
+## Cleaning up data: diagnostics
+
+ * Never trust the data
+ * *Not even your own*
+ * use tibbles (and/or colorDF) to display data frames
+ * Check whether data types are what they are supposed to be
+ * Check whether factors have the expected number of levels
+    * Use `unique` to figure out how many different values there are in a
+      vector
+ * Check whether numbers have the correct range
+ * Check whether character / numeric vectors are not factors by mistake
+
+## Exercise 4/3
+
 

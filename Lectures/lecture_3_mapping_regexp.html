@@ -176,9 +176,41 @@ slide:not(.current) .plotly.html-widget{
           </hgroup>
   </slide>
 
-<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Mapping</h2></hgroup><article  class="smaller " id="mapping">
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Mapping</h2></hgroup><article  id="mapping" class="smaller ">
 
-</article></slide><slide class=""><hgroup><h2>How to understand mapping</h2></hgroup><article  class="smaller " id="how-to-understand-mapping">
+</article></slide><slide class=""><hgroup><h2>Mapping functions</h2></hgroup><article  id="mapping-functions" class="smaller ">
+
+<p><code>lapply</code> takes two arguments:</p>
+
+<ul>
+<li>a vector or a list,</li>
+<li>a function</li>
+</ul>
+
+<p>Then, it applies the function to each element of the vector / list and returns a list (with one element per list).</p>
+
+</article></slide><slide class=""><hgroup><h2>Example</h2></hgroup><article  id="example" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>fn &lt;- c(&quot;em.txt&quot;, &quot;pstrem.txt&quot;, &quot;bzdrem.txt&quot;)
+res &lt;- lapply(fn, read.table)
+lapply(res, summary)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Example with data frames</h2></hgroup><article  id="example-with-data-frames" class="smaller ">
+
+<p>Remember: data frames are also lists!</p>
+
+<pre class = 'prettyprint lang-r'>annot &lt;- read.csv(&quot;annotation.all.csv&quot;)
+
+## what are the variable types?
+lapply(annot, class)
+
+## how many missing data?
+count_nas &lt;- function(x) {
+  sum(is.na(x))
+}
+lapply(annot, count_nas)</pre>
+
+</article></slide><slide class=""><hgroup><h2>How to understand mapping</h2></hgroup><article  id="how-to-understand-mapping" class="smaller ">
 
 <p>In R, functions can be passed as arguments.</p>
 
@@ -192,34 +224,54 @@ slide:not(.current) .plotly.html-widget{
   return(ret)
 }</pre>
 
-</article></slide><slide class=""><hgroup><h2>Mapping in R / in R + tidyverse</h2></hgroup><article  class="smaller " id="mapping-in-r-in-r-tidyverse">
+</article></slide><slide class=""><hgroup><h2>Closures</h2></hgroup><article  id="closures" class="smaller ">
+
+<p>Creating a function with <code>foox &lt;- function(x) { ... }</code> is not different from assigning a value to a variable, like <code>foox &lt;- 2</code>. Just like you don’t have to use <code>foox</code> when you mean <code>2</code>, but can use <code>2</code> directly, you don’t have to assign function to a variable, but can use <code>function(x) { ... }</code> directly:</p>
+
+<pre class = 'prettyprint lang-r'>## because of precedence, we need brackets
+(function(a, b){ a + b })(1, 2) 
+
+## is the same as
+add_two &lt;- function(a, b){ a + b }
+add_two(1, 2)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Mapping in R / in R + tidyverse</h2></hgroup><article  id="mapping-in-r-in-r-tidyverse" class="smaller ">
+
+<p>We can use closures always:</p>
 
 <pre class = 'prettyprint lang-r'>tmp &lt;- list(a=1, b=2, c=1:10)
 
 lapply(tmp, length)
 lapply(tmp, function(x) paste(x, collapse=&quot;, &quot;))</pre>
 
-</article></slide><slide class=""><hgroup><h2>Mapping in R / in R + tidyverse</h2></hgroup><article  class="smaller " id="mapping-in-r-in-r-tidyverse-1">
+<p>Remember: <code>.</code> in R is just a letter, it can be a variable. The last part can be</p>
+
+<pre class = 'prettyprint lang-r'>lapply(tmp, function(.) paste(., collapse=&quot;, &quot;))</pre>
+
+</article></slide><slide class=""><hgroup><h2>Mapping in R / in R + tidyverse</h2></hgroup><article  id="mapping-in-r-in-r-tidyverse-1" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>map(tmp, ~ paste(., collapse=&quot;, &quot;))
 
 ## type conversion is always specified
 map_chr(tmp, ~ paste(., collapse=&quot;, &quot;))</pre>
 
-</article></slide><slide class=""><hgroup><h2>Why both worlds?</h2></hgroup><article  class="smaller " id="why-both-worlds">
+</article></slide><slide class=""><hgroup><h2>Why both worlds?</h2></hgroup><article  id="why-both-worlds" class="smaller ">
 
 <ul>
 <li>The *pply functions are still widely used, so you will see them in code</li>
 <li>sometimes using tidyverse does not really give you a bonus (90% of the cases a regular lapply will do)</li>
+<li>tidyverse notation with <code>~</code> is a bit more concise, but as any shorthand, it can be confusing</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Why not use <code>group_by</code> and <code>summarise</code>?</h2></hgroup><article  class="smaller " id="why-not-use-group_by-and-summarise">
+</article></slide><slide class=""><hgroup><h2>Why not use <code>group_by</code> and <code>summarise</code>?</h2></hgroup><article  id="why-not-use-group_by-and-summarise" class="smaller ">
 
 <p>Thes functions work on data frames – lists of vectors of <em>equal</em> length. They don’t work on lists of vectors which have different lengths!</p>
 
 <p>On the other hand, *pply family and the purrr functions work also on data frames (because data frames are lists!).</p>
 
-</article></slide><slide class=""><hgroup><h2>lapply &amp; sapply</h2></hgroup><article  class="smaller " id="lapply-sapply">
+<p>Also, mapping functions are way more powerful.</p>
+
+</article></slide><slide class=""><hgroup><h2>lapply &amp; sapply</h2></hgroup><article  id="lapply-sapply" class="smaller ">
 
 <p><code>lapply</code> takes a list and returns a list, always.</p>
 
@@ -230,14 +282,14 @@ map_chr(tmp, ~ paste(., collapse=&quot;, &quot;))</pre>
 <pre class = 'prettyprint lang-r'>lapply(starwars$name, nchar)
 sapply(starwars$name, nchar)</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>replicate</code></h2></hgroup><article  class="smaller " id="replicate">
+</article></slide><slide class=""><hgroup><h2><code>replicate</code></h2></hgroup><article  id="replicate" class="smaller ">
 
 <p>This is a special form of <code>sapply</code> which simply calls a function <code>n</code> times and returns the results in a list. <em>Note that it uses an expression and not a function as a second argument.</em></p>
 
 <pre class = 'prettyprint lang-r'>## create 10 vectors with random numbers
 replicate(10, rnorm(10), simplify=FALSE)</pre>
 
-</article></slide><slide class=""><hgroup><h2>General form</h2></hgroup><article  class="smaller " id="general-form">
+</article></slide><slide class=""><hgroup><h2>General form</h2></hgroup><article  id="general-form" class="smaller ">
 
 <pre class = 'prettyprint lang-r'>xxxapply(data, ..., function)</pre>
 
@@ -248,7 +300,7 @@ sapply(starwars$name,
   function(x) 
       gsub(&quot; &quot;, &quot;_&quot;, starwars$name))</pre>
 
-</article></slide><slide class=""><hgroup><h2>apply</h2></hgroup><article  class="smaller " id="apply">
+</article></slide><slide class=""><hgroup><h2>apply</h2></hgroup><article  id="apply" class="smaller ">
 
 <p><code>apply</code> is for data frames and matrices (two-dimensional objects). The second argument determines whether it works row-wise (1) or column-wise (2):</p>
 
@@ -258,7 +310,7 @@ mtx &lt;- matrix(rnorm(60), ncol=3)
 apply(mtx, 1, sum)
 apply(mtx, 2, sum)</pre>
 
-</article></slide><slide class=""><hgroup><h2>There is a simpler way</h2></hgroup><article  class="smaller " id="there-is-a-simpler-way">
+</article></slide><slide class=""><hgroup><h2>There is a simpler way</h2></hgroup><article  id="there-is-a-simpler-way" class="smaller ">
 
 <p>Don’t forget following convenience functions:</p>
 
@@ -269,19 +321,19 @@ apply(mtx, 2, sum)</pre>
 
 <p>(However, there is no colSD or rowSD)</p>
 
-</article></slide><slide class=""><hgroup><h2>tapply</h2></hgroup><article  class="smaller " id="tapply">
+</article></slide><slide class=""><hgroup><h2>tapply</h2></hgroup><article  id="tapply" class="smaller ">
 
 <p><code>tapply</code> applies a function to vector split by levels of a factor. For example, we might want to know what is the mean mpg for cars with different number of cylinders:</p>
 
 <pre class = 'prettyprint lang-r'>tapply(mtcars$mpg, mtcars$cyl, mean)</pre>
 
-<p>This is a really important function.</p>
+<p>This is a really useful function.</p>
 
-</article></slide><slide class=""><hgroup><h2>Exercise 3/1</h2></hgroup><article  class="smaller " id="exercise-31">
+</article></slide><slide class=""><hgroup><h2>Exercise 3/1</h2></hgroup><article  id="exercise-31" class="smaller ">
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2><code>purrr</code></h2></hgroup><article  class="smaller " id="purrr">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2><code>purrr</code></h2></hgroup><article  id="purrr" class="smaller ">
 
-</article></slide><slide class=""><hgroup><h2><code>map</code> and co.</h2></hgroup><article  class="smaller " id="map-and-co.">
+</article></slide><slide class=""><hgroup><h2><code>map</code> and co.</h2></hgroup><article  id="map-and-co." class="smaller ">
 
 <p><code>map</code> works very much like <code>sapply(..., simplify=F)</code>, and its variants explicitely try to cast the result in an appriopriate format.</p>
 
@@ -292,7 +344,7 @@ apply(mtx, 2, sum)</pre>
 <li><code>map_dbl</code> – double (floating point) vector</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>The weird syntax of <code>map</code></h2></hgroup><article  class="smaller " id="the-weird-syntax-of-map">
+</article></slide><slide class=""><hgroup><h2>The weird syntax of <code>map</code></h2></hgroup><article  id="the-weird-syntax-of-map" class="smaller ">
 
 <p>To make the map functions more terse, map family adopted a particular way of formulating custom functions. <code>.</code> (dot) is automatically used as argument, and instead of writing <code>function(x) ...</code> you write <code>~ ...</code>:</p>
 
@@ -306,7 +358,7 @@ apply(mtx, 2, sum)</pre>
 <pre > map(1:10, ~ rnorm(.))</pre></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Formula notation in dplyr</h2></hgroup><article  class="smaller " id="formula-notation-in-dplyr">
+</article></slide><slide class=""><hgroup><h2>Formula notation in dplyr</h2></hgroup><article  id="formula-notation-in-dplyr" class="smaller ">
 
 <p>The same notation can be used also in dplyr with the <code>mutate_all</code> and <code>rename_all</code> functions:</p>
 
@@ -316,7 +368,7 @@ starwars %&gt;% mutate_all(~ gsub(&quot;none&quot;, NA, .))
 ## Modify all variable names
 starwars %&gt;% rename_all(~ paste0(&quot;Var_&quot;, .))</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>map_dfr</code> and <code>map_dfc</code></h2></hgroup><article  class="smaller " id="map_dfr-and-map_dfc">
+</article></slide><slide class=""><hgroup><h2><code>map_dfr</code> and <code>map_dfc</code></h2></hgroup><article  id="map_dfr-and-map_dfc" class="smaller ">
 
 <p>These two create a data frame. If your function returns each time a data frame, map will join these – either by rows (<code>map_dfr</code>) or by columns (<code>map_dfc</code>).</p>
 
@@ -328,7 +380,7 @@ names(rv) &lt;- LETTERS[1:10]
 map_dfr(rv, ~ data.frame(mean=mean(.), sd=sd(.)))
 map_dfc(rv, ~ c(mean=mean(.), sd=sd(.)))</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>map2</code> et co.</h2></hgroup><article  class="smaller " id="map2-et-co.">
+</article></slide><slide class=""><hgroup><h2><code>map2</code> et co.</h2></hgroup><article  id="map2-et-co." class="smaller ">
 
 <p>Sometimes you want to go over two or more vectors at the same time. Instead of <code>.</code> you have two automatic variable names, <code>.x</code> and <code>.y</code>.</p>
 
@@ -338,14 +390,14 @@ sw_vehcls &lt;- starwars$vehicles
 map2_chr(sw_names, sw_vehcls, 
   ~ paste0(.x, &quot;_&quot;, length(.y)))</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>pmap</code> and co.</h2></hgroup><article  class="smaller " id="pmap-and-co.">
+</article></slide><slide class=""><hgroup><h2><code>pmap</code> and co.</h2></hgroup><article  id="pmap-and-co." class="smaller ">
 
 <p><code>pmap</code> uses a list of vectors of identical length and passes all its columns as <code>...</code> to a function.</p>
 
 <pre class = 'prettyprint lang-r'>data &lt;- list(a=1:3, b=rnorm(3), c=3:1)
 pmap(data, ~ sum(...))</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>pmap</code> and co.</h2></hgroup><article  class="smaller " id="pmap-and-co.-1">
+</article></slide><slide class=""><hgroup><h2><code>pmap</code> and co.</h2></hgroup><article  id="pmap-and-co.-1" class="smaller ">
 
 <p>Remember: data.frame is also a list! So you can apply pmap to a data frame and process each row.</p>
 
@@ -355,11 +407,18 @@ pmap(data, ~ sum(...))</pre>
   drop_na() %&gt;%
   pmap_chr(~ sprintf(&quot;%s has %s hair and %s eyes&quot;, ...))</pre>
 
-</article></slide><slide class=""><hgroup><h2>Exercise 3/2</h2></hgroup><article  class="smaller " id="exercise-32">
+</article></slide><slide class=""><hgroup><h2><code>imap_*</code> functions</h2></hgroup><article  id="imap_-functions" class="smaller ">
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Regular expressions</h2></hgroup><article  class="smaller " id="regular-expressions">
+<p>Very useful! Instead of having only <code>.</code> for the actual element, we have <code>.x</code> for the element and <em>additionally</em> <code>.y</code> which holds this elements name.</p>
 
-</article></slide><slide class=""><hgroup><h2>regexp: regular expressions</h2></hgroup><article  class="smaller " id="regexp-regular-expressions">
+<pre class = 'prettyprint lang-r'>vec &lt;- list(last_name=&quot;Gates&quot;, first_name=&quot;Bill&quot;)
+map_chr(vec, ~ paste0(.y, &quot;: &quot;, .x)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 3/2</h2></hgroup><article  id="exercise-32" class="smaller ">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Regular expressions</h2></hgroup><article  id="regular-expressions" class="smaller ">
+
+</article></slide><slide class=""><hgroup><h2>regexp: regular expressions</h2></hgroup><article  id="regexp-regular-expressions" class="smaller ">
 
 <p>regexp is for matching patterns to strings. A basic unit of regexp is an atom, which can be followed by a modifier. Examples:</p>
 
@@ -374,7 +433,29 @@ pmap(data, ~ sum(...))</pre>
 <li><code>[^...]</code> – (atom) match anything <em>but</em> a letter between the brackets</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Other important modifiers</h2></hgroup><article  class="smaller " id="other-important-modifiers">
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>gsub(&quot;a+&quot;, &quot;%&quot;, &quot;q a aa aaa&quot;)
+gsub(&quot;a*&quot;, &quot;%&quot;, &quot;q a aa aaa&quot;)
+gsub(&quot;a?&quot;, &quot;%&quot;, &quot;q a aa aaa&quot;)
+gsub(&quot;[abcdz]&quot;, &quot;%&quot;, &quot;abcdefghijklmnopqrstuvwz&quot;)
+gsub(&quot;[a-cu-z]&quot;, &quot;%&quot;, &quot;abcdefghijklmnopqrstuvwz&quot;)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ranges / classes</h2></hgroup><article  id="ranges-classes" class="smaller ">
+
+<pre class = 'prettyprint lang-r'>gsub(&quot;[[:alnum:]]&quot;, &quot;@&quot;, &quot;2 + 3 * a = 10&quot;)</pre>
+
+<p>Some classes:</p>
+
+<ul>
+<li><code>[:alpha:]</code> - all characters (a-z, A-Z)</li>
+<li><code>[:space:]</code> – all spaces (tabs etc)</li>
+<li><code>[:graph:]</code> – characters + punctuations</li>
+</ul>
+
+<p>Look up <code>?regexp</code> for more.</p>
+
+</article></slide><slide class=""><hgroup><h2>Other important modifiers</h2></hgroup><article  id="other-important-modifiers" class="smaller ">
 
 <ul>
 <li><code>^</code>: if at the beginning of a regexp, then it matches only the beginning of the string, so <code>^oo</code> matches &ldquo;oo&rdquo; but not &ldquo;Atchoo&rdquo;.</li>
@@ -382,7 +463,7 @@ pmap(data, ~ sum(...))</pre>
 <li><code>^oo$</code> matches &ldquo;oo&rdquo; and nothing else</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>how to match a modifier?</h2></hgroup><article  class="smaller " id="how-to-match-a-modifier">
+</article></slide><slide class=""><hgroup><h2>how to match a modifier?</h2></hgroup><article  id="how-to-match-a-modifier" class="smaller ">
 
 <p>How do you match a star, or a question mark?</p>
 
@@ -396,11 +477,11 @@ grep(&quot;abcd?e&quot;, x)
 # matches &quot;abcd?e&quot;:
 grep(&quot;abcd\\?e&quot;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Why two backslashes</h2></hgroup><article  class="smaller " id="why-two-backslashes">
+</article></slide><slide class=""><hgroup><h2>Why two backslashes</h2></hgroup><article  id="why-two-backslashes" class="smaller ">
 
 <p>Backslash in R is <em>always</em> for creating &ldquo;special&rdquo; characters. For example, <code>\n</code> means a new line. So to actually get a backslash, you need to precede it with a backslash: <code>\\</code>. In other languages it may be different or depend on the context.</p>
 
-</article></slide><slide class=""><hgroup><h2>What can we use it for</h2></hgroup><article  class="smaller " id="what-can-we-use-it-for">
+</article></slide><slide class=""><hgroup><h2>What can we use it for</h2></hgroup><article  id="what-can-we-use-it-for" class="smaller ">
 
 <ul>
 <li>Searching through a vector: with <code>grep()</code> or <code>grepl()</code></li>
@@ -408,7 +489,7 @@ grep(&quot;abcd\\?e&quot;)</pre>
 <li>Searching within a string: with <code>regexpr()</code> or <code>gregexpr()</code></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>The coolest part: groups</h2></hgroup><article  class="smaller " id="the-coolest-part-groups">
+</article></slide><slide class=""><hgroup><h2>The coolest part: groups</h2></hgroup><article  id="the-coolest-part-groups" class="smaller ">
 
 <p>You can easily extract matched fragments from strings:</p>
 
@@ -416,7 +497,57 @@ grep(&quot;abcd\\?e&quot;)</pre>
 
 gsub(&quot;name:(.*) last_name:(.*)&quot;, &quot;\\2 \\1&quot;, input)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Exercise 3/3</h2></hgroup><article  class="smaller " id="exercise-33"></article></slide>
+</article></slide><slide class=""><hgroup><h2>Group example</h2></hgroup><article  id="group-example" class="smaller ">
+
+<p>Problem: botched identifiers, fusing sample ids and individual IDs.</p>
+
+<pre class = 'prettyprint lang-r'>identifiers &lt;- c(&quot;S001 ID9835&quot;, &quot;S002-ID12363&quot;, &quot;S003_ID84755&quot;)</pre>
+
+<p>Many ways to handle this.</p>
+
+<h3>Group example</h3>
+
+<pre class = 'prettyprint lang-r'>identifiers &lt;- c(&quot;S001 ID9835&quot;, &quot;S002-ID12363&quot;, &quot;S003_ID84755&quot;)
+data.frame(ids=identifiers) %&gt;% separate(ids, sep=&quot;[- _]&quot;, into=c(&quot;sample&quot;, &quot;ID&quot;))</pre>
+
+<h3>Group example</h3>
+
+<pre class = 'prettyprint lang-r'>identifiers &lt;- c(&quot;S001 ID9835&quot;, &quot;S002-ID12363&quot;, &quot;S003_ID84755&quot;)
+
+data.frame(ids=identifiers) %&gt;% separate(ids, sep=&quot;[- _]&quot;, into=c(&quot;sample&quot;, &quot;ID&quot;))
+
+strsplit(identifiers, &quot;[- _]&quot;)</pre>
+
+<h3>Group example</h3>
+
+<pre class = 'prettyprint lang-r'>identifiers &lt;- c(&quot;S001 ID9835&quot;, &quot;S002-ID12363&quot;, &quot;S003_ID84755&quot;)
+
+regex &lt;- &quot;(S[0-9]+)[ -_](ID[0-9]+)&quot;
+data.frame(
+  sample=gsub(regex, &quot;\\1&quot;, identifiers),
+  ID=gsub(regex, &quot;\\1&quot;, identifiers))</pre>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 3/3</h2></hgroup><article  id="exercise-33" class="smaller ">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Cleaning up data</h2></hgroup><article  id="cleaning-up-data" class="smaller ">
+
+</article></slide><slide class=""><hgroup><h2>Cleaning up data: diagnostics</h2></hgroup><article  id="cleaning-up-data-diagnostics" class="smaller ">
+
+<ul>
+<li>Never trust the data</li>
+<li><em>Not even your own</em></li>
+<li>use tibbles (and/or colorDF) to display data frames</li>
+<li>Check whether data types are what they are supposed to be</li>
+<li>Check whether factors have the expected number of levels
+
+<ul>
+<li>Use <code>unique</code> to figure out how many different values there are in a vector</li>
+</ul></li>
+<li>Check whether numbers have the correct range</li>
+<li>Check whether character / numeric vectors are not factors by mistake</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 4/3</h2></hgroup><article  id="exercise-43" class="smaller "></article></slide>
 
 
   <slide class="backdrop"></slide>
