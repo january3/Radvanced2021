@@ -68,14 +68,7 @@
  7. In starwars data frame, change each two part name into a "last name,
     first name" format (for example "Skywalker, Luke")
 
-# Session 3/3
-
- 1. Try correcting the data in `iris.csv` with `as.numeric` 
-    (e.g. `iris$Sepal.Width <- as.numeric(iris$Sepal.Width)`). Filter the
-    data to show all rows with NAs (how can you do that?)
-
- 2. Once all columns (except for the last one) are numeric, check the
-    ranges of the numeric data. Does it look OK? What happened?
+# Session 3/4
 
  3. Using whatever means available, clean up the data set `meta_data_botched.xlsx`
 
