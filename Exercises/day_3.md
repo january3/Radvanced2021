@@ -70,7 +70,7 @@
 
 # Session 3/4
 
- 3. Using whatever means available, clean up the data set `meta_data_botched.xlsx`
+ 3. Using whatever means available, clean up the data set `meta_data_botched.xlsx`; use functions `class` and `unique`.
 
  4. Extra: use the `summary_colorDF` function from the `colorDF` package
      to show an overview of the data.
