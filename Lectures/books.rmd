@@ -52,6 +52,16 @@ Suggested general Links:
 
     * [Programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html)
 
+ 7. Regular expressions
+
+    * Use the man page ([link](https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html))
+
+    * Tutorial from [CRAN](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html)
+
+    * [Another tutorial](https://rstudio-pubs-static.s3.amazonaws.com/74603_76cd14d5983f47408fdf0b323550b846.html)
+
+    * Regexp [lessons](https://regexone.com/) (not R!)
+
  7. Plotting
 
     * [Top 50 visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
