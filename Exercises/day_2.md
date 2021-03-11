@@ -108,29 +108,4 @@
 
 
 
-# Session 2/0.5: basic usage of lapply
-
-  2. Read the data set [iris.tsv]("../Datasets/iris.tsv"). Use `lapply` to
-     calculate the mean of each column. Now try the same with the function
-     `sapply`. What is the difference?
-
-  1. Read the data set [iris.csv]("../Datasets/iris.csv"). Can you see what
-     is wrong with the data set? Use `lapply` and `class` to figure it out.
-     If you haven't used `read_csv`, do that; can you tell immediately
-     where the problems are based on the tibble output?
-
-  3. Correct the column names of `iris.csv`.
-
-  3. Try correcting the data with `as.numeric` 
-     (e.g. `iris$Sepal.Width <- as.numeric(iris$Sepal.Width)`). Filter the
-     data to show all rows with NAs (how can you do that?)
-
-  4. Once all columns (except for the last one) are numeric, check the
-     ranges of the numeric data. Does it look OK? What happened?
-
-  5. Extra: clean up the data set `meta_data_botched.xlsx`
-
-  6. Extra: use the `summary_colorDF` function from the `colorDF` package
-     to show an overview of the data.
-
 

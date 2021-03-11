@@ -9,7 +9,7 @@
 
 
 
-  <meta name="date" content="2021-03-09" />
+  <meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -173,7 +173,7 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2021-03-09</p>
+            <p style="margin-top: 6px; margin-left: -2px;">2021-03-10</p>
           </hgroup>
   </slide>
 
@@ -808,61 +808,12 @@ pivot_wider(long, id_cols=subject, names_from=&quot;condition&quot;, values_from
 
 <pre class = 'prettyprint lang-r'># make sure you select columns from variable 
 # and not by name
-df %&lt;&gt;% select(!!cols)</pre>
+df %&lt;&gt;% select(all_of(cols))
 
-</article></slide><slide class=""><hgroup><h2>Exercise Session 2/3</h2></hgroup><article  id="exercise-session-23" class="smaller ">
+# or, to use all but the columns in cols
+df %&lt;&gt;% select(!all_of(cols))</pre>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Cleaning up data</h2></hgroup><article  id="cleaning-up-data" class="smaller ">
-
-</article></slide><slide class=""><hgroup><h2>Mapping functions (part #1)</h2></hgroup><article  id="mapping-functions-part-1" class="smaller ">
-
-<p><code>lapply</code> takes two arguments:</p>
-
-<ul>
-<li>a vector or a list,</li>
-<li>a function</li>
-</ul>
-
-<p>Then, it applies the function to each element of the vector / list and returns a list (with one element per list).</p>
-
-</article></slide><slide class=""><hgroup><h2>Example</h2></hgroup><article  id="example" class="smaller ">
-
-<pre class = 'prettyprint lang-r'>fn &lt;- c(&quot;em.txt&quot;, &quot;pstrem.txt&quot;, &quot;bzdrem.txt&quot;)
-res &lt;- lapply(fn, read.table)
-lapply(res, summary)</pre>
-
-</article></slide><slide class=""><hgroup><h2>Example with data frames</h2></hgroup><article  id="example-with-data-frames" class="smaller ">
-
-<p>Remember: data frames are also lists!</p>
-
-<pre class = 'prettyprint lang-r'>annot &lt;- read.csv(&quot;annotation.all.csv&quot;)
-
-## what are the variable types?
-lapply(annot, class)
-
-## how many missing data?
-count_nas &lt;- function(x) {
-  sum(is.na(x))
-}
-lapply(annot, count_nas)</pre>
-
-</article></slide><slide class=""><hgroup><h2>Cleaning up data: diagnostics</h2></hgroup><article  id="cleaning-up-data-diagnostics" class="smaller ">
-
-<ul>
-<li>Never trust the data</li>
-<li><em>Not even your own</em></li>
-<li>use tibbles (and/or colorDF) to display data frames</li>
-<li>Check whether data types are what they are supposed to be</li>
-<li>Check whether factors have the expected number of levels
-
-<ul>
-<li>Use <code>unique</code> to figure out how many different values there are in a vector</li>
-</ul></li>
-<li>Check whether numbers have the correct range</li>
-<li>Check whether character / numeric vectors are not factors by mistake</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Exercise Session 2/4</h2></hgroup><article  id="exercise-session-24" class="smaller unnumbered">
+</article></slide><slide class=""><hgroup><h2>Exercise Session 2/3</h2></hgroup><article  id="exercise-session-23" class="smaller unnumbered">
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-weiner2018metabolite" class="csl-entry">

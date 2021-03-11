@@ -481,63 +481,13 @@ be explicit in your code:
 ```{r eval=FALSE}
 # make sure you select columns from variable 
 # and not by name
-df %<>% select(!!cols)
+df %<>% select(all_of(cols))
+
+# or, to use all but the columns in cols
+df %<>% select(!all_of(cols))
 ```
 
 
 ## Exercise Session 2/3
-
-# Cleaning up data
-
-## Mapping functions (part #1)
-
-`lapply` takes two arguments: 
-
-  * a vector or a list, 
-  * a function
-
-Then, it applies the function to each element of the vector / list and
-returns a list (with one element per list).
-
-## Example
-
-```r
-fn <- c("em.txt", "pstrem.txt", "bzdrem.txt")
-res <- lapply(fn, read.table)
-lapply(res, summary)
-```
-
-## Example with data frames
-
-Remember: data frames are also lists!
-
-```r
-annot <- read.csv("annotation.all.csv")
-
-## what are the variable types?
-lapply(annot, class)
-
-## how many missing data?
-count_nas <- function(x) {
-  sum(is.na(x))
-}
-lapply(annot, count_nas)
-```
-
-## Cleaning up data: diagnostics
-
- * Never trust the data
- * *Not even your own*
- * use tibbles (and/or colorDF) to display data frames
- * Check whether data types are what they are supposed to be
- * Check whether factors have the expected number of levels
-    * Use `unique` to figure out how many different values there are in a
-      vector
- * Check whether numbers have the correct range
- * Check whether character / numeric vectors are not factors by mistake
-
-
-
-## Exercise Session 2/4
 
 
