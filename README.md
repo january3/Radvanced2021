@@ -25,4 +25,5 @@ read_csv("https://raw.githubusercontent.com/january3/Radvanced2020/master/Data/i
     * [Lecture 1 (Good coding practices)](https://january3.github.io/Radvanced2021/Lectures/lecture_1_good_practice.html)
     * [Lecture 2 (Rmarkdown / tidyverse)](https://january3.github.io/Radvanced2021/Lectures/lecture_2_tidyverse.html)
     * [Lecture 3 (mapping / regexp)](https://january3.github.io/Radvanced2021/Lectures/lecture_3_mapping_regexp.html)
+    * [Lecture 4 (graphics)](https://january3.github.io/Radvanced2021/Lectures/lecture_4_graphics.html)
 

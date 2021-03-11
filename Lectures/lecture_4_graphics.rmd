@@ -429,6 +429,15 @@ watch?)
  * guides (axes, legends)
  * theme (specific look of things)
 
+## Simple plot
+
+```{r}
+data(mpg)
+ggplot(mpg, aes(x=hwy, y=cty)) + geom_point()
+```
+
+
+
 ## Example session
  
 We will now use world inequality data to create a bar plot.

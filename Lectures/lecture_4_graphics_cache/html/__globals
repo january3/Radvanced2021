@@ -1,0 +1,67 @@
+unnamed-chunk-2	library
+barplot_01	%>%	aes	arrow	cyl	element_line	factor	geom_bar	ggplot	group_by	mean	mean_mpg	mpg	mtcars	mutate	summarise	theme	unit
+barplot_02	aes	arrow	cyl	element_line	geom_bar	p	theme	unit
+barplot_03	aes	cyl	geom_bar	p	theme
+barplot_04	geom_bar	p	theme
+barplot_05	geom_bar	p	theme
+barplot_06	element_blank	geom_bar	p	theme
+barplot_07	element_blank	element_line	element_rect	geom_bar	p	T	theme
+barplot_08	element_blank	element_line	element_rect	geom_bar	p	T	theme	xlab	ylab
+unnamed-chunk-3	library	theme_grey	theme_set
+boxplot_01	~	boxplot	mpg
+boxplot_02	%>%	aes	class	element_blank	element_text	geom_tufteboxplot	ggplot	hwy	margin	mpg	mutate	paste0	substring	theme	theme_tufte	toupper	xlab
+scatter_themes	~	$<-	aes	c	cyl	disp	factor	geom_point	ggplot	hp	list	map	mtcars	plot_grid	theme_cowplot	theme_par	theme_tufte
+unnamed-chunk-4	>	c	if	par	plot.new	plotPals	rep	require	wgBarplot	wgBoxpie	wgBurst	wgPie	wgPlanets	wgRing	wgRug
+unnamed-chunk-5	wigplot
+unnamed-chunk-6	wigplot
+unnamed-chunk-7	wigplot
+unnamed-chunk-8	wigplot
+unnamed-chunk-9	wigplot
+unnamed-chunk-10	wigplot
+unnamed-chunk-11	wigplot
+wid	!	&	%>%	==	>	c	country	d1	d10	drop_na	duplicated	factor	filter	gather	gini_reported	mutate	paste0	population	q1	q5	quality	quantile	read_excel	region_un	select	year
+wid01	%>%	aes	coord_flip	country	data	geom_bar	ggplot	proportion	quantile
+wid2	%>%	aes	coord_flip	country	factor	geom_bar	ggplot	mutate	paste0	proportion	quantile
+wid3	%>%	aes	coord_flip	country	desc	factor	gather	geom_bar	ggplot	gini_reported	mutate	paste0	proportion	q1	q5	quantile	reorder	wid2015sel
+wid4	guide_legend	guides	p	scale_fill_brewer	theme_tufte	xlab	ylab
+scatter	aes	c	geom_point	ggplot	plot_grid	rnorm	theme	theme_tufte	unit
+plotwidgets	$	c	cos	for	length	library	list	modhueCol	par	pi	plot.new	plotPals	seq	sin	text	wgPlanets
+rcolorbrewer	c	display.brewer.all	library	par
+rcolorbrewer2	c	display.brewer.all	par	T
+brewerbase	$	$<-	brewer.pal	factor	legend	levels	plot
+pals01	aes	element_text	geom_point	ggplot	iris	margin	scale_color_brewer	Sepal.Length	Sepal.Width	Species	theme	theme_tufte
+pals02	aes	element_text	geom_point	ggplot	iris	margin	scale_color_brewer	Sepal.Length	Sepal.Width	Species	theme	theme_tufte
+pals03	aes	element_text	geom_point	ggplot	iris	margin	scale_color_brewer	Sepal.Length	Sepal.Width	Species	theme	theme_tufte
+pals04	aes	element_text	geom_point	ggplot	iris	margin	scale_color_brewer	Sepal.Length	Sepal.Width	Species	theme	theme_tufte
+viridis1	library	show_col	viridis_pal
+pals_viridis	aes	element_text	geom_point	ggplot	iris	margin	scale_color_brewer	Sepal.Length	Sepal.Width	Species	theme	theme_tufte
+plotwidgetspals	c	library	par	showPals
+pals05	aes	element_text	geom_point	ggplot	iris	margin	plotPals	scale_color_manual	Sepal.Length	Sepal.Width	Species	theme	theme_tufte
+colorramp	c	colorRampPalette
+unnamed-chunk-12	aes	cty	data	geom_point	ggplot	hwy	mpg
+unnamed-chunk-13	:::	class	print	print.data.frame	starwars
+unnamed-chunk-14	c	cat	class	class<-	paste0
+unnamed-chunk-15	cat	paste	pi	UseMethod	v1
+unnamed-chunk-16	c	class	class<-	paste0	return
+facets	$	aes	cty	facet_grid	geom_point	ggplot	hwy	mpg
+unnamed-chunk-17	.	%>%	aes	class	disp	geom_point	ggplot	grep	hp	methods	mpg	mtcars	print	scale_color_viridis_c
+unnamed-chunk-18	c	for	pie
+unnamed-chunk-19	::	gapminder	head	library	theme_bw	theme_set
+unnamed-chunk-20	%>%	aes	gapminder	gdpPercap	geom_point	ggplot	lifeExp	year
+gapminder1	%>%	==	$	aes	continent	filter	gapminder	gdpPercap	geom_point	ggplot	lifeExp	plot_grid	range	scale_color_brewer	scale_x_log10	xlim	year	ylim
+unnamed-chunk-21	%>%	aes	gapminder	gdpPercap	geom_point	ggplot	lifeExp	scale_x_log10	year
+unnamed-chunk-22	%>%	aes	gapminder	gdpPercap	geom_point	ggplot	lifeExp	scale_color_viridis_c	scale_x_log10	year
+gganim	%>%	aes	anim_save	animate	av_renderer	c	continent	ease_aes	gapminder	gdpPercap	geom_point	ggplot	labs	library	lifeExp	pop	scale_color_brewer	scale_size	scale_x_log10	transition_time	year
+gganim2	%>%	~	aes	continent	facet_grid	gapminder	gdpPercap	geom_point	ggplot	library	lifeExp	pop	scale_x_log10	year
+unnamed-chunk-23	%>%	==	aes	filter	gapminder	gdpPercap	geom_point	ggplot	lifeExp	scale_color_brewer	scale_x_log10	year
+unnamed-chunk-24	%>%	==	aes	filter	gapminder	gdpPercap	geom_point	ggplot	lifeExp	pop	scale_color_brewer	scale_x_log10	year
+unnamed-chunk-25	%>%	==	aes	country	country_colors	filter	gapminder	gdpPercap	geom_point	ggplot	lifeExp	pop	scale_color_manual	scale_x_log10	year
+unnamed-chunk-26	%>%	~	aes	c	continent	facet_grid	filter	gapminder	gdpPercap	geom_point	ggplot	lifeExp	scale_color_brewer	scale_x_log10	year
+unnamed-chunk-27	%>%	~	aes	c	continent	facet_grid	filter	gapminder	gdpPercap	geom_point	ggplot	lifeExp	pop	scale_color_brewer	scale_x_log10	year
+unnamed-chunk-28	%>%	~	aes	c	continent	facet_grid	filter	gapminder	gdpPercap	geom_point	ggplot	lifeExp	pop	scale_color_brewer	scale_x_log10	year
+correlogram	c	cor	data	ggcorrplot	library	mtcars	round	theme_bw
+gapminder_slope	%>%	aes	c	continent	F	filter	gapminder	gdpPercap	geom_label	geom_line	geom_point	ggplot	group_by	mean	median	scale_y_log10	summarise	xlim	year
+gapminder_dmb	&	%>%	==	aes	arrange	c	continent	country	factor	filter	gapminder	gdpPercap	geom_line	geom_point	ggplot	mutate	unique	year
+densityplots	aes	cty	cyl	data	factor	geom_density	ggplot	labs	mpg
+boxplot_3	%>%	aes	class	geom_boxplot	ggplot	hwy	mpg
+boxplot_4	%>%	aes	class	geom_boxplot	geom_dotplot	ggplot	hwy	mpg

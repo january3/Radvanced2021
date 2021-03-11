@@ -51,3 +51,7 @@ Suggested general Links:
     * [Programming with tidyverse](https://www.r-bloggers.com/2019/07/bang-bang-how-to-program-with-dplyr/)
 
     * [Programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html)
+
+ 7. Plotting
+
+    * [Top 50 visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
