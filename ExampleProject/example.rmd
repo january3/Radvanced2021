@@ -55,10 +55,10 @@ The difference between the groups was `r if(res$p.value > 0.05) "not"`
 significant (`r format.pval(res$p.value, digits=2)`).
 
 
-```{r}
+```{r theplot, echo=TRUE, fig.height=4, fig.width=4, warning=FALSE}
 # this will be computer code
 a <- 1
-
+warning("this is a warning")
 plot(1:10)
 ```
 
