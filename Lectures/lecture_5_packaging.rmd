@@ -45,6 +45,12 @@ theme_set(theme_grey())
 
 ![](files/fig_tmod_overview-1.png){width=1000px}
 
+## R hierarchy
+
+ * github – everyone, no checks
+ * CRAN – rigorous formal checks
+ * Bioconductor – rigorous formal and scientific checks
+
 ## R package 
 
 To create an R package, we need to have a directory with a few files and
