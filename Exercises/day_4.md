@@ -55,18 +55,20 @@
 
 # Session 4/4
 
- 1. The data set [expression_data_vaccination_example.xlsx](https://raw.githubusercontent.com/january3/Radvanced2020/master/Data/expression_data_vaccination_example.xlsx) 
+ 1. The data set [expression_data_vaccination_example.xlsx](https://raw.githubusercontent.com/january3/Radvanced2021/master/Datasets/expression_data_vaccination_example.xlsx) 
     (large file!) contains raw data (microarray log signals) of gene expression in human
     subjects who were vaccinated with an influenza vaccine on day 0. The
     excel file contains numerous sheets; figure out what they are (one of
-    them is the expression matrix containing the actual data). Use
-    padjust to correct the p-values for multiple testing.
+    them is the expression matrix containing the actual data).
+
  2. Using t.test and lapply (or map), find the genes with the largest
     significant differences on day 1. Hint: for a gene in row 1 of the
     expression matrix, you need to figure out which samples are from day 0,
     which are from day 1, and then run `t.test(expr[1, day0], expr[1, day1])`.
     Another hint: t.test returns a list. One of the elements of that list
-    is a p.value.
+    is a p.value. Use
+    padjust to correct the p-values for multiple testing.
+
  3. Use a beeswarm (beeswarm package for base R, ggbeeswarm with the
     `geom_beeswarm` for the ggplot2) representation to show the differences
     between day 0 and day 1 for the genes with the lowest p-value.

@@ -65,3 +65,12 @@ Suggested general Links:
  7. Plotting
 
     * [Top 50 visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+ 8. Developing packages
+
+    * Specification: [Writing R extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html) 
+
+    * [devtools Cheat sheet](https://rstudio.com/wp-content/uploads/2015/03/devtools-cheatsheet.pdf)
+
+    * [Happy git with R](https://happygitwithr.com/)
+

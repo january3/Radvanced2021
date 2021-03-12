@@ -935,7 +935,7 @@ methods(class="ggplot")
 methods(print) %>% { .[grep("ggplot", .)] }
 ```
 
-## Exercise 3/4 (optional)
+## Exercise 4/3 (optional)
 
 
 # ggplot2 tips and tricks
