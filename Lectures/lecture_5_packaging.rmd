@@ -45,14 +45,21 @@ theme_set(theme_grey())
 
 ![](files/fig_tmod_overview-1.png){width=1000px}
 
+## R hierarchy
+
+ * github – everyone, no checks
+ * CRAN – rigorous formal checks
+ * Bioconductor – rigorous formal and scientific checks
+
 ## R package 
 
 To create an R package, we need to have a directory with a few files and
 directories in it. The main directory should have the name of the package
 we are building.
 
-Don't worry, all the necessary files and directories will be created when
+Don't you worry, all the necessary files and directories will be created when
 you create a project in rstudio or run `usethis::create_package`. 
+
 
 ## Example
 
